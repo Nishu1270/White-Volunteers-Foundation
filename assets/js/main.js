@@ -88,14 +88,14 @@ function initMobileNav() {
 }
 
 /* ==========================================================================
-   3. Hero Banner Carousel with Smooth 3-Second Transitions
+   3. 5-Image Clean Slideshow Controller (4-Second Auto-Scroll, No Text on Images)
    ========================================================================== */
 function initHeroSlider() {
-  const slider = document.querySelector('.hero-slideshow-container, .hero-slider-section');
-  const slides = document.querySelectorAll('.hero-split-slide, .hero-slide');
-  const dots = document.querySelectorAll('.split-dot, .slider-dot');
-  const prevBtn = document.querySelector('.slider-prev');
-  const nextBtn = document.querySelector('.slider-next');
+  const slides = document.querySelectorAll('.showcase-slide, .hero-split-slide, .fullscreen-slide');
+  const dots = document.querySelectorAll('.showcase-dot, .split-dot, .slider-dot');
+  const prevBtn = document.getElementById('heroSliderPrev') || document.getElementById('heroPrevSlide');
+  const nextBtn = document.getElementById('heroSliderNext') || document.getElementById('heroNextSlide');
+  const container = document.querySelector('.hero-photo-showcase-section') || document.querySelector('.hero-slideshow-container') || document.querySelector('.hero-fullscreen-slider-section');
 
   if (slides.length === 0) return;
 
@@ -124,7 +124,7 @@ function initHeroSlider() {
 
   function startAutoPlay() {
     stopAutoPlay();
-    slideInterval = setInterval(nextSlide, 3000); // 3 seconds exactly as requested
+    slideInterval = setInterval(nextSlide, 2000); // 2-second smooth auto-scroll
   }
 
   function stopAutoPlay() {
@@ -134,20 +134,24 @@ function initHeroSlider() {
     }
   }
 
+  // Arrow Event Listeners
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       nextSlide();
       startAutoPlay();
     });
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       prevSlide();
       startAutoPlay();
     });
   }
 
+  // Dot Click Listeners
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
       showSlide(i);
@@ -155,74 +159,49 @@ function initHeroSlider() {
     });
   });
 
-  if (slider) {
-    slider.addEventListener('mouseenter', stopAutoPlay);
-    slider.addEventListener('mouseleave', startAutoPlay);
+  // Pause on Hover
+  if (container) {
+    container.addEventListener('mouseenter', stopAutoPlay);
+    container.addEventListener('mouseleave', startAutoPlay);
   }
 
+  // Touch Swipe Support on Mobile
+  if (container) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    container.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        nextSlide();
+      } else if (touchEndX - touchStartX > 50) {
+        prevSlide();
+      }
+      startAutoPlay();
+    }, { passive: true });
+  }
+
+  // Initial setup
   showSlide(0);
   startAutoPlay();
 }
 
 /* ==========================================================================
-   4. Impact Counters (Scroll-Triggered Smooth Count-Up Animation)
+   4. Impact Counters (Static Immediate Render, No Animation Delays)
    ========================================================================== */
 function initCounterAnimation() {
   const counters = document.querySelectorAll('.counter');
   if (counters.length === 0) return;
 
-  function animateCounter(counter) {
+  counters.forEach(counter => {
     const target = +counter.getAttribute('data-target') || 0;
     const suffix = counter.getAttribute('data-suffix') || '';
-    const duration = 2200; // 2.2 seconds smooth counting
-    let startTimestamp = null;
-
-    function step(timestamp) {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      
-      // Smooth cubic ease-out curve
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const currentVal = Math.floor(easeProgress * target);
-
-      counter.textContent = currentVal.toLocaleString('en-IN') + suffix;
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        counter.textContent = target.toLocaleString('en-IN') + suffix;
-      }
-    }
-
-    window.requestAnimationFrame(step);
-  }
-
-  let animated = false;
-
-  const statsSection = document.querySelector('.floating-stats-card, .stats-strip, #stats');
-  if (statsSection && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-          animated = true;
-          counters.forEach(counter => animateCounter(counter));
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.25,
-      rootMargin: '0px 0px -30px 0px'
-    });
-
-    observer.observe(statsSection);
-  } else {
-    // If not observed or IntersectionObserver not supported
-    counters.forEach(counter => {
-      const target = +counter.getAttribute('data-target') || 0;
-      const suffix = counter.getAttribute('data-suffix') || '';
-      counter.textContent = target.toLocaleString('en-IN') + suffix;
-    });
-  }
+    counter.textContent = target.toLocaleString('en-IN') + suffix;
+  });
 }
 
 /* ==========================================================================

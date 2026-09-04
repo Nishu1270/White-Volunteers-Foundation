@@ -234,71 +234,51 @@
   </div>
 
   <!-- =========================================================================
-       4. Modern Split Hero Banner with 3-Second Auto-Rotating Photo Slideshow
+       4. Full-Width 5-Image Photo Showcase (Clean, High-Definition, No Text Overlay)
        ========================================================================= -->
-  <section class="hero-modern-split-section">
-    <div class="container hero-split-grid">
-      <!-- Left Column: Content -->
-      <div class="hero-modern-content">
-        <h1 class="hero-modern-title">
-          Empowering Youth.<br>
-          <span class="highlight-blue" style="color: #1877f2;">Transforming Society.</span>
-        </h1>
-        <p class="hero-modern-desc">
-          Together, we can build a better tomorrow through education, health, environment and community development across Telangana and beyond.
-        </p>
-        <div class="hero-modern-ctas">
-          <button class="btn-hero-donate" onclick="openDonateModal(1000, 'Hero Banner')">
-            <i class="fas fa-heart"></i> Donate Now
-          </button>
-          <button class="btn-hero-volunteer" onclick="openVolunteerModal('Hero Banner')">
-            <i class="fas fa-user-friends"></i> Become a Volunteer
-          </button>
-          <a href="programs.html" class="btn-hero-programs">
-            <i class="fas fa-th-large"></i> Explore Programs
-          </a>
-        </div>
+  <section class="hero-photo-showcase-section" id="hero">
+    <!-- 5 Full-Width High-Res Authentic Images (Reversed: Last to First) -->
+    <div class="hero-showcase-slides">
+      <!-- Slide 1: Volunteers & Children Community Programs (Originally Slide 5) -->
+      <div class="showcase-slide active">
+        <img src="assets/images/volunteers-children-community-hall.jpg" alt="Volunteers engaging in community school programs" loading="eager">
       </div>
-
-      <!-- Right Column: Auto-Rotating 3-Second Photo Slideshow -->
-      <div class="hero-slideshow-container">
-        <div class="hero-slides-wrapper">
-          <!-- Slide 1: Volunteers and School Children Outdoors -->
-          <div class="hero-split-slide active">
-            <img src="assets/images/volunteer-school-children-outdoors.jpg" alt="Volunteers and School Children Outdoors" loading="eager">
-          </div>
-          <!-- Slide 2: Founder Latha Maraveni with Govt School Students -->
-          <div class="hero-split-slide">
-            <img src="assets/images/latha-maraveni-govt-school-students.jpg" alt="Founder Latha Maraveni with Govt School Students">
-          </div>
-          <!-- Slide 3: Official Inauguration Ceremony -->
-          <div class="hero-split-slide">
-            <img src="assets/images/foundation-inauguration-ceremony.jpg" alt="Foundation Inauguration Ceremony">
-          </div>
-          <!-- Slide 4: Stationery and Notebooks Distribution -->
-          <div class="hero-split-slide">
-            <img src="assets/images/classroom-notebooks-students.jpg" alt="Stationery and Notebooks Distribution">
-          </div>
-          <!-- Slide 5: Volunteers and Children Community Hall -->
-          <div class="hero-split-slide">
-            <img src="assets/images/volunteers-children-community-hall.jpg" alt="Volunteers and Children Community Hall">
-          </div>
-          <!-- Slide 6: Volunteers with School Students in Classroom -->
-          <div class="hero-split-slide">
-            <img src="assets/images/volunteer-students-classroom-selfie.jpg" alt="Volunteers and School Students Classroom">
-          </div>
-        </div>
-
-        <!-- Slideshow Navigation Dots -->
-        <div class="hero-split-dots">
-          <span class="split-dot active" aria-label="Slide 1"></span>
-          <span class="split-dot" aria-label="Slide 2"></span>
-          <span class="split-dot" aria-label="Slide 3"></span>
-          <span class="split-dot" aria-label="Slide 4"></span>
-          <span class="split-dot" aria-label="Slide 5"></span>
-          <span class="split-dot" aria-label="Slide 6"></span>
-        </div>
+      <!-- Slide 2: Foundation Inauguration Ceremony (Originally Slide 4) -->
+      <div class="showcase-slide">
+        <img src="assets/images/foundation-inauguration-ceremony.jpg" alt="White Volunteers Foundation Inauguration Ceremony">
       </div>
+      <!-- Slide 3: Founder Latha Maraveni Visiting Govt School Students (Originally Slide 3) -->
+      <div class="showcase-slide">
+        <img src="assets/images/latha-maraveni-govt-school-students.jpg" alt="Founder Latha Maraveni visiting school students" style="object-position: center 65%;">
+      </div>
+      <!-- Slide 4: Classroom Stationery & Learning Kits (Originally Slide 2) -->
+      <div class="showcase-slide">
+        <img src="assets/images/classroom-notebooks-students.jpg" alt="Classroom Stationery and Education Kits Distribution">
+      </div>
+      <!-- Slide 5: School Children & Morning Nutrition (Originally Slide 1) -->
+      <div class="showcase-slide">
+        <img src="assets/images/volunteer-school-children-outdoors.jpg" alt="White Volunteers Foundation Morning Nutrition Program">
+      </div>
+    </div>
+
+    <!-- Soft Bottom Gradient for Contrast on Controls -->
+    <div class="hero-showcase-gradient"></div>
+
+    <!-- Navigation Arrows -->
+    <button class="hero-showcase-arrow hero-showcase-prev" id="heroSliderPrev" aria-label="Previous Slide">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="hero-showcase-arrow hero-showcase-next" id="heroSliderNext" aria-label="Next Slide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Slide Indicator Dots (5 Slides, 4s Auto-Scroll) -->
+    <div class="hero-showcase-dots">
+      <span class="showcase-dot active" data-slide="0" aria-label="Slide 1"></span>
+      <span class="showcase-dot" data-slide="1" aria-label="Slide 2"></span>
+      <span class="showcase-dot" data-slide="2" aria-label="Slide 3"></span>
+      <span class="showcase-dot" data-slide="3" aria-label="Slide 4"></span>
+      <span class="showcase-dot" data-slide="4" aria-label="Slide 5"></span>
     </div>
   </section>
 
@@ -309,10 +289,10 @@
     <div class="container">
       <div class="floating-stats-card" id="stats">
         
-        <!-- Stat 1: Lives / Children Impacted (Orange Badge) -->
+        <!-- Stat 1: Lives / Children Impacted (Signature Sapphire Blue Badge) -->
         <div class="floating-stat-item">
-          <div class="stat-badge-icon badge-orange">
-            <i class="fas fa-users"></i>
+          <div class="stat-badge-icon badge-sapphire">
+            <i class="fas fa-child"></i>
           </div>
           <div class="stat-content-wrap">
             <div class="stat-val counter" data-target="12500" data-suffix="+">0</div>
@@ -320,10 +300,10 @@
           </div>
         </div>
 
-        <!-- Stat 2: Students Educated (Blue Badge) -->
+        <!-- Stat 2: Meals & Milk Served (Royal Blue Nutrition Badge) -->
         <div class="floating-stat-item">
           <div class="stat-badge-icon badge-blue">
-            <i class="fas fa-user-graduate"></i>
+            <i class="fas fa-utensils"></i>
           </div>
           <div class="stat-content-wrap">
             <div class="stat-val counter" data-target="45000" data-suffix="+">0</div>
@@ -331,10 +311,10 @@
           </div>
         </div>
 
-        <!-- Stat 3: Active Volunteers (Sky Blue Badge) -->
+        <!-- Stat 3: Active Volunteers (Indigo Volunteer Helping Badge) -->
         <div class="floating-stat-item">
-          <div class="stat-badge-icon badge-sky">
-            <i class="fas fa-hands-helping"></i>
+          <div class="stat-badge-icon badge-indigo">
+            <i class="fas fa-hand-holding-heart"></i>
           </div>
           <div class="stat-content-wrap">
             <div class="stat-val counter" data-target="1850" data-suffix="+">0</div>
@@ -342,10 +322,10 @@
           </div>
         </div>
 
-        <!-- Stat 4: Health / Classroom Renovations (Warm Orange Badge) -->
+        <!-- Stat 4: Classrooms Renovated (Teal School Renovation Badge) -->
         <div class="floating-stat-item">
-          <div class="stat-badge-icon badge-heart">
-            <i class="fas fa-heartbeat"></i>
+          <div class="stat-badge-icon badge-teal">
+            <i class="fas fa-school"></i>
           </div>
           <div class="stat-content-wrap">
             <div class="stat-val counter" data-target="320" data-suffix="+">0</div>
@@ -353,10 +333,10 @@
           </div>
         </div>
 
-        <!-- Stat 5: City Chapters (Green Badge) -->
+        <!-- Stat 5: City Chapters (Emerald City Network Badge) -->
         <div class="floating-stat-item">
-          <div class="stat-badge-icon badge-green">
-            <i class="fas fa-map-marked-alt"></i>
+          <div class="stat-badge-icon badge-emerald">
+            <i class="fas fa-city"></i>
           </div>
           <div class="stat-content-wrap">
             <div class="stat-val counter" data-target="24" data-suffix="+">0</div>
