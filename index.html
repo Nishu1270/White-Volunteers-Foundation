@@ -723,20 +723,26 @@
   </section>
 
   <!-- =========================================================================
-       12. Section 6: Call to Action Banner (Join Us)
+       12. Section 6: Call to Action Banner (Join Us) - Centered Alignment
        ========================================================================= -->
-  <section class="section-padding-sm" style="background: linear-gradient(135deg, var(--primary) 0%, #0c4fa8 100%); color: #fff;">
-    <div class="container text-center">
-      <h2 style="color: #fff; margin-bottom: 1rem; font-size: 2.2rem; font-weight: 800;">Volunteer. Partner. Support. Transform.</h2>
-      <p style="color: rgba(255, 255, 255, 0.95); max-width: 780px; margin: 0 auto 1.5rem; font-size: 1.05rem; line-height: 1.7;">
-        Be part of White Volunteers Foundation and help us create meaningful opportunities for children, strengthen Government Schools, support digital learning, develop skills, and empower women.
-      </p>
-      <p style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 2rem;">
-        Together, we can turn support into opportunity and opportunity into lasting change.
-      </p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <button class="btn btn-white btn-lg" style="color: var(--primary); font-weight: 700;" onclick="openVolunteerModal('Homepage Main CTA')"><i class="fas fa-user-plus"></i> Volunteer With Us</button>
-        <button class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;" onclick="openDonateModal(1000, 'Support Our Work (80G)')"><i class="fas fa-heart"></i> Support Our Work (80G)</button>
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner-content">
+        <h2 class="cta-banner-title">Volunteer. Partner. Support. Transform.</h2>
+        <p class="cta-banner-desc">
+          Be part of White Volunteers Foundation and help us create meaningful opportunities for children, strengthen Government Schools, support digital learning, develop skills, and empower women.
+        </p>
+        <p class="cta-banner-tagline">
+          Together, we can turn support into opportunity and opportunity into lasting change.
+        </p>
+        <div class="cta-banner-buttons">
+          <button class="btn btn-white btn-lg" onclick="openVolunteerModal('Homepage Main CTA')">
+            <i class="fas fa-user-plus"></i> Volunteer With Us
+          </button>
+          <button class="btn btn-outline-white btn-lg" onclick="openDonateModal(1000, 'Support Our Work (80G)')">
+            <i class="fas fa-heart"></i> Support Our Work (80G)
+          </button>
+        </div>
       </div>
     </div>
   </section>
